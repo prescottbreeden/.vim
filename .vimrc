@@ -94,6 +94,14 @@ map <right> <nop>
 " normal-mode settings: 
 " =====================
 
+" insert carriage return
+" nmap <S-Enter> O<ESC>
+" nmap <CR> o<ESC>
+nmap <C-ENTER> i<CR><ESC>kA<ESC>
+
+" insert space
+nmap <C-l> i<SPACE><ESC>
+
 " disable current search highlights
 nnoremap <C-n> :nohl <return>
 
