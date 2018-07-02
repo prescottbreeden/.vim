@@ -51,9 +51,6 @@ exec 'set softtabstop=' .s:tabwidth
 
 set bg=dark " tell vim using a dark background
 
-" color scheme
-syntax on
-colorscheme Iosvkem
 
 " ========================
 " autocorrect basic typos:
@@ -65,10 +62,19 @@ iabbrev taht that
 iabbrev adn and
 
 " ========
-" plugins:
+" pathogen load:
 " ========
-execute pathogen#infect()
+filetype off
+
+call pathogen#infect()
+call pathogen#helptags()
+
 filetype plugin indent on
+
+" color scheme
+syntax on
+colorscheme Iosvkem
+let g:pymode_python = 'python3'
 
 " let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
 

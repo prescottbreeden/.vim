@@ -1,10 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/home/prescottbreeden/Documents/code/projects/portfolio'
-let g:netrw_dirhist_2='/home/prescottbreeden/Documents/code/projects/portfolio/public'
-let g:netrw_dirhist_3='/home/prescottbreeden/Documents/code/projects/portfolio/public/css'
-let g:netrw_dirhist_4='/home/prescottbreeden/Documents/code/projects/portfolio/public'
-let g:netrw_dirhist_5='/home/prescottbreeden/Documents/code/projects/portfolio'
-let g:netrw_dirhist_6='/home/prescottbreeden/Documents/code/udemy/css/canoo'
-let g:netrw_dirhist_7='/home/prescottbreeden/Documents/code/udemy/css/canoo/sass'
-let g:netrw_dirhist_8='/home/prescottbreeden/Documents/code/udemy/css/canoo'
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/home/prescottbreeden/Documents/code/python/flask/wall/routes/__pycache__'
+let g:netrw_dirhist_2='/home/prescottbreeden/Documents/code/python/flask/wall/routes'
+let g:netrw_dirhist_3='/home/prescottbreeden/Documents/code/python/flask/wall'
