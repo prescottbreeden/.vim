@@ -19,6 +19,7 @@ set ignorecase " Ignore case when searching
 set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters.
 set number " Turn on line numbering 
 ""set backup " Turn on file backups
+:let g:netrw_dirhistmax = 0  " turn off history
 
 " =========================
 " Don't line wrap mid-word:
@@ -99,6 +100,14 @@ map <right> <nop>
 " =====================
 " normal-mode settings: 
 " =====================
+
+" insert carriage return
+" nmap <S-Enter> O<ESC>
+" nmap <CR> o<ESC>
+nmap <C-ENTER> i<CR><ESC>kA<ESC>
+
+" insert space
+nmap <C-l> i<SPACE><ESC>
 
 " disable current search highlights
 nnoremap <C-n> :nohl <return>

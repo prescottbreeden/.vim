@@ -1,5 +1,11 @@
 let g:netrw_dirhistmax  =10
+<<<<<<< HEAD
 let g:netrw_dirhist_cnt =3
 let g:netrw_dirhist_1='/home/prescottbreeden/Documents/code/python/flask/wall/routes/__pycache__'
 let g:netrw_dirhist_2='/home/prescottbreeden/Documents/code/python/flask/wall/routes'
 let g:netrw_dirhist_3='/home/prescottbreeden/Documents/code/python/flask/wall'
+=======
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/Users/pb/Documents/code/udemy/ColtSteele_mySQL'
+let g:netrw_dirhist_2='/Users/pb/Documents/code/udemy/ColtSteele_mySQL/udemy_db'
+>>>>>>> 0d3a56d1017a0b3337e1d6d74190fe286ca0486e
