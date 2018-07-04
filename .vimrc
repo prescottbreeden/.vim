@@ -120,12 +120,11 @@ nnoremap <C-n> :nohl <return>
 inoremap jk <esc>
 
 " Automatically add closing ( { [ ' " `
-inoremap {<cr> {<cr>}<ESC>kA<CR>
-inoremap { {}<ESC>i
-inoremap ( ()<ESC>i
-inoremap [ []<ESC>i
-inoremap '' ''<ESC>i
-inoremap "" ""<ESC>i
+" inoremap { {}<ESC>i
+" inoremap ( ()<ESC>i
+" inoremap [ []<ESC>i
+" inoremap '' ''<ESC>i
+" inoremap \"" \""<ESC>i
 
 " create code block indent when hitting return after opening bracket
 inoremap (; (<CR>);<C-c>O
@@ -134,6 +133,10 @@ inoremap {; {<CR>};<C-c>O
 inoremap {, {<CR>},<C-c>O
 inoremap [; [<CR>];<C-c>O
 inoremap [, [<CR>],<C-c>O
+
+inoremap {<cr> {<cr>}<ESC>kA<CR>
+inoremap (<cr> (<cr>)<ESC>kA<CR>
+inoremap [<cr> [<cr>]<ESC>kA<CR>
 
 " ======================
 " command-mode settings: 
