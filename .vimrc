@@ -32,6 +32,7 @@ set breakindent
 " indents and tabs:
 " =================
 
+set colorcolumn=80 " column width 80 char default
 set noexpandtab " Make sure that every file uses real tabs, not spaces
 set shiftround " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
@@ -76,6 +77,7 @@ filetype plugin indent on
 syntax on
 colorscheme Iosvkem
 let g:pymode_python = 'python3'
+let g:pymode_lint_ignore = ["W605",] 
 
 " let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
 
