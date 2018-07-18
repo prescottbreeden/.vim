@@ -129,16 +129,18 @@ inoremap jk <esc>
 " inoremap \"" \""<ESC>i
 
 " create code block indent when hitting return after opening bracket
-inoremap (; (<CR>);<C-c>O
-inoremap (, (<CR>),<C-c>O
-inoremap {; {<CR>};<C-c>O
-inoremap {, {<CR>},<C-c>O
-inoremap [; [<CR>];<C-c>O
-inoremap [, [<CR>],<C-c>O
+" inoremap (; (<CR>);<C-c>O
+" inoremap (, (<CR>),<C-c>O
+" inoremap {; {<CR>};<C-c>O
+" inoremap {, {<CR>},<C-c>O
+" inoremap [; [<CR>];<C-c>O
+" inoremap [, [<CR>],<C-c>O
 
-inoremap {<cr> {<cr>}<ESC>kA<CR>
-inoremap (<cr> (<cr>)<ESC>kA<CR>
-inoremap [<cr> [<cr>]<ESC>kA<CR>
+" inoremap {<cr> {<cr>}<ESC>kA<CR>
+" inoremap (<cr> (<cr>)<ESC>kA<CR>
+" inoremap [<cr> [<cr>]<ESC>kA<CR>
+
+" inoremap ({<cr> ({<cr>});<C-c>O
 
 " ======================
 " command-mode settings: 
