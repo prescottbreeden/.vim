@@ -8,6 +8,7 @@
 " general settings:
 " =================
 
+set updatetime=100
 set history=1000 " Save 1,000 items in history
 set ruler  " Show the line and column number of the cursor position
 set showcmd " Display the incomplete commands in the bottom right-hand side of your screen.  
