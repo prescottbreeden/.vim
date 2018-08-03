@@ -19,8 +19,11 @@ set incsearch " Enable incremental searching
 set ignorecase " Ignore case when searching
 set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters.
 set number " Turn on line numbering 
-""set backup " Turn on file backups
+"set backup " Turn on file backups
 :let g:netrw_dirhistmax = 0  " turn off history
+
+" airline theme
+let g:airline_theme='base16'
 
 " =========================
 " Don't line wrap mid-word:
@@ -73,6 +76,7 @@ call pathogen#infect()
 call pathogen#helptags()
 
 filetype plugin indent on
+
 
 " color scheme
 syntax on
