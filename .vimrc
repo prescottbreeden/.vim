@@ -83,8 +83,7 @@ syntax on
 colorscheme Iosvkem
 let g:pymode_python = 'python3'
 let g:pymode_lint_ignore = ["W605",] 
-
-" let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
+let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
