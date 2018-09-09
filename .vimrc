@@ -51,6 +51,8 @@ exec 'set tabstop='     .s:tabwidth
 exec 'set shiftwidth='  .s:tabwidth
 exec 'set softtabstop=' .s:tabwidth
 
+autocmd FileType py setlocal shiftwidth=4 tabstop=4 softtabstop=4
+
 " ================
 " colors / themes:
 " ================
