@@ -40,7 +40,7 @@ set colorcolumn=80 " column width 80 char default
 set noexpandtab " Make sure that every file uses real tabs, not spaces
 set shiftround " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
-set autoindent " copy indent from current line, over ot the new line
+set autoindent " copy indent from current line, over to the new line
 
 " Enable smart tabs
 set smarttab
@@ -59,7 +59,6 @@ autocmd FileType py setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 set bg=dark " tell vim using a dark background
 
-
 " ========================
 " autocorrect basic typos:
 " ========================
@@ -68,10 +67,11 @@ iabbrev waht what
 iabbrev tehn then
 iabbrev taht that
 iabbrev adn and
+iabbrev ot to
 
-" ========
-" pathogen load:
-" ========
+" ========================
+" plugins / pathogen load:
+" ========================
 filetype off
 
 call pathogen#infect()
@@ -80,21 +80,27 @@ call pathogen#helptags()
 call plug#begin('~/.vim/plugged')
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
 filetype plugin indent on
 
+" emmet settings
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
 
 " color scheme
 syntax on
 colorscheme Iosvkem
 let g:pymode_python = 'python3'
 let g:pymode_lint_ignore = ["W605",] 
-" let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       Key Mapping Modifications						"
+"                       Key Mapping Modifications												"
 "                                                                       "
 "                                                                       "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
