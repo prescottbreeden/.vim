@@ -46,7 +46,7 @@ set autoindent " copy indent from current line, over ot the new line
 set smarttab
 
 " Make a tab equal to 4 spaces
-let s:tabwidth=4
+let s:tabwidth=2
 exec 'set tabstop='     .s:tabwidth
 exec 'set shiftwidth='  .s:tabwidth
 exec 'set softtabstop=' .s:tabwidth
@@ -75,6 +75,11 @@ filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
+call plug#begin('~/.vim/plugged')
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+call plug#end()
+
 filetype plugin indent on
 
 
@@ -83,7 +88,7 @@ syntax on
 colorscheme Iosvkem
 let g:pymode_python = 'python3'
 let g:pymode_lint_ignore = ["W605",] 
-let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
+" let g:used_javascript_libs = 'underscore,backbone,angularjs,angularui,jquery'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
