@@ -81,6 +81,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
+Plug 'mhartington/oceanic-next'
 call plug#end()
 
 filetype plugin indent on
@@ -94,7 +95,22 @@ let g:user_emmet_settings = {
 
 " color scheme
 syntax on
+syntax enable
 colorscheme Iosvkem
+
+" " Theme
+" syntax enable
+" " for vim 7
+" set t_Co=256
+
+" " for vim 8
+" if (has("termguicolors"))
+" 	set termguicolors
+" endif
+
+" colorscheme OceanicNext
+
+
 let g:pymode_python = 'python3'
 let g:pymode_lint_ignore = ["W605",] 
 
