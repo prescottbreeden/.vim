@@ -11,13 +11,13 @@
 set updatetime=100
 set history=1000 " Save 1,000 items in history
 set ruler  " Show the line and column number of the cursor position
-set showcmd " Display the incomplete commands in the bottom right-hand side of your screen.  
+set showcmd " Display the incomplete commands in the bottom of your screen.  
 set wildmenu " Display completion matches on your status line
 set scrolloff=5 " Show a few lines of context around the cursor
 set hlsearch " Highlight search matches
 set incsearch " Enable incremental searching
 set ignorecase " Ignore case when searching
-set smartcase " Override the 'ignorecase' option if the search pattern contains upper case characters.
+set smartcase " Override 'ignorecase' if search pattern has upper characters.
 set number " Turn on line numbering 
 "set backup " Turn on file backups
 :let g:netrw_dirhistmax = 0  " turn off history
