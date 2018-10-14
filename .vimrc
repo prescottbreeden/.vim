@@ -20,7 +20,8 @@ set ignorecase " Ignore case when searching
 set smartcase " Override 'ignorecase' if search pattern has upper characters.
 set number " Turn on line numbering 
 "set backup " Turn on file backups
-:let g:netrw_dirhistmax = 0  " turn off history
+let g:netrw_dirhistmax = 0  " turn off history
+
 
 " airline theme
 let g:airline_theme='base16'
@@ -37,7 +38,7 @@ set breakindent
 " =================
 
 set colorcolumn=80 " column width 80 char default
-set noexpandtab " Make sure that every file uses real tabs, not spaces
+set expandtab " Make sure that every file uses real tabs, not spaces
 set shiftround " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
 set autoindent " copy indent from current line, over to the new line
