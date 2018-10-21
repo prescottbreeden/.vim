@@ -19,6 +19,7 @@ set incsearch " Enable incremental searching
 set ignorecase " Ignore case when searching
 set smartcase " Override 'ignorecase' if search pattern has upper characters.
 set number " Turn on line numbering 
+set nowrap " Turn off line wrapping
 "set backup " Turn on file backups
 let g:netrw_dirhistmax = 0  " turn off history
 
@@ -29,9 +30,8 @@ let g:airline_theme='base16'
 " =========================
 " Don't line wrap mid-word:
 " =========================
-
-set lbr
-set breakindent
+" set lbr
+" set breakindent
 
 " =================
 " indents and tabs:
@@ -69,6 +69,7 @@ iabbrev tehn then
 iabbrev taht that
 iabbrev adn and
 iabbrev ot to
+iabbrev aling align
 
 " ========================
 " plugins / pathogen load:
@@ -126,8 +127,7 @@ let g:pymode_lint_ignore = ["W605",]
 " general settings: 
 " =================
 
-
-" Don't use arrow keys
+" Disable arrow keys
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -136,57 +136,32 @@ map <right> <nop>
 " =====================
 " normal-mode settings: 
 " =====================
-
-" insert carriage return
-" nmap <S-Enter> O<ESC>
-" nmap <CR> o<ESC>
-nmap <C-ENTER> i<CR><ESC>kA<ESC>
-
-" insert space
-nmap <C-l> i<SPACE><ESC>
-
-" disable current search highlights
+nmap io o<ESC>
 nnoremap <C-n> :nohl <return>
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
+noremap cp yap<S-}>p
 
 " =====================
 " insert-mode settings: 
 " =====================
-
-" alternate command to return to normal mode
 inoremap jk <esc>
 
-" Automatically add closing ( { [ ' " `
-" inoremap { {}<ESC>i
-" inoremap ( ()<ESC>i
-" inoremap [ []<ESC>i
-" inoremap '' ''<ESC>i
-" inoremap \"" \""<ESC>i
-
-" create code block indent when hitting return after opening bracket
-" inoremap (; (<CR>);<C-c>O
-" inoremap (, (<CR>),<C-c>O
-" inoremap {; {<CR>};<C-c>O
-" inoremap {, {<CR>},<C-c>O
-" inoremap [; [<CR>];<C-c>O
-" inoremap [, [<CR>],<C-c>O
-
-" inoremap {<cr> {<cr>}<ESC>kA<CR>
-" inoremap (<cr> (<cr>)<ESC>kA<CR>
-" inoremap [<cr> [<cr>]<ESC>kA<CR>
-
-" inoremap ({<cr> ({<cr>});<C-c>O
-
 " ======================
-" command-mode settings: 
+" leader commands
 " ======================
+map <space> <leader>
 
-" Spacebar enters command-mode
-map <space> :
+" noremap <leader>w = :w
+" noremap <leader>q = :q
+noremap <leader>a =ip
+noremap <silent> <leader>s :set spell!<cr>
 
-
-
-
-
+" ]s  Next spelling mistake
+" [s  Previous spelling mistake
+" z=  Give suggestions (prepent 1, use first suggestions automatically)
+" zg  Add mispelled to spellfile
+" zug Remove word from spellfile
 
 
 
