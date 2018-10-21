@@ -70,6 +70,8 @@ iabbrev taht that
 iabbrev adn and
 iabbrev ot to
 iabbrev aling align
+iabbrev accross across
+iabbrev hte the
 
 " ========================
 " plugins / pathogen load:
@@ -136,7 +138,6 @@ map <right> <nop>
 " =====================
 " normal-mode settings: 
 " =====================
-nmap io o<ESC>
 nnoremap <C-n> :nohl <return>
 nnoremap Q @q
 vnoremap Q :norm @q<cr>
@@ -146,6 +147,10 @@ noremap cp yap<S-}>p
 " insert-mode settings: 
 " =====================
 inoremap jk <esc>
+" imap <C-h> <Left>
+" imap <C-j> <Down>
+" imap <C-k> <Up>
+" imap <C-l> <Right>
 
 " ======================
 " leader commands
