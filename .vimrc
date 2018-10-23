@@ -53,6 +53,7 @@ exec 'set shiftwidth='  .s:tabwidth
 exec 'set softtabstop=' .s:tabwidth
 
 autocmd FileType py setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 " ================
 " colors / themes:
@@ -155,7 +156,7 @@ inoremap jk <esc>
 " ======================
 " leader commands
 " ======================
-map <space> <leader>
+map <space> :
 
 " noremap <leader>w = :w
 " noremap <leader>q = :q
