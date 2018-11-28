@@ -54,6 +54,7 @@ exec 'set softtabstop=' .s:tabwidth
 
 autocmd FileType py setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType cshtml EmmetInstall
 
 " ================
 " colors / themes:
