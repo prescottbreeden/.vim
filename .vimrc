@@ -1,8 +1,8 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                               Prescott's vimrc                               "
-"                                                                              "
-"                                                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  "                           Prescott's vimrc												    "
+  "                                                                       "
+  "                                                                       "
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " =================
 " general settings:
@@ -22,16 +22,8 @@ set number " Turn on line numbering
 set nowrap " Turn off line wrapping
 "set backup " Turn on file backups
 let g:netrw_dirhistmax = 0  " turn off history
+let g:airline_theme='base16' " airline theme
 
-
-" airline theme
-let g:airline_theme='base16'
-
-" =========================
-" Don't line wrap mid-word:
-" =========================
-" set lbr
-" set breakindent
 
 " =================
 " indents and tabs:
@@ -54,6 +46,7 @@ exec 'set softtabstop=' .s:tabwidth
 
 autocmd FileType py setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType cs setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType cshtml EmmetInstall
 
 " ================
@@ -61,6 +54,7 @@ autocmd FileType cshtml EmmetInstall
 " ================
 
 set bg=dark " tell vim using a dark background
+color slate
 
 " ========================
 " autocorrect basic typos:
@@ -87,7 +81,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'mattn/emmet-vim'
-Plug 'mhartington/oceanic-next'
 call plug#end()
 
 filetype plugin indent on
@@ -117,21 +110,17 @@ colorscheme Iosvkem
 " colorscheme OceanicNext
 
 
-let g:pymode_python = 'python3'
-let g:pymode_lint_ignore = ["W605",] 
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                       Key Mapping Modifications												"
-"                                                                       "
-"                                                                       "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  "                       Key Mapping Modifications												"
+  "                                                                       "
+  "                                                                       "
+  """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " =================
 " general settings: 
 " =================
-
-" Disable arrow keys
+" Disable arrow key cursor motion
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
@@ -140,30 +129,25 @@ map <right> <nop>
 " =====================
 " normal-mode settings: 
 " =====================
+map <space> :
 nnoremap <C-n> :nohl <return>
-nnoremap Q @q
-vnoremap Q :norm @q<cr>
 noremap cp yap<S-}>p
+noremap <C-up> <C-w>+
+noremap <C-down> <C-w>-
+noremap <C-left> <C-w><
+noremap <C-right> <C-w>>
 
 " =====================
 " insert-mode settings: 
 " =====================
 inoremap jk <esc>
-" imap <C-h> <Left>
-" imap <C-j> <Down>
-" imap <C-k> <Up>
-" imap <C-l> <Right>
 
 " ======================
 " leader commands
 " ======================
-map <space> :
-
-" noremap <leader>w = :w
-" noremap <leader>q = :q
 noremap <leader>a =ip
-noremap <silent> <leader>s :set spell!<cr>
 
+noremap <silent> <leader>s :set spell!<cr>
 " ]s  Next spelling mistake
 " [s  Previous spelling mistake
 " z=  Give suggestions (prepent 1, use first suggestions automatically)
