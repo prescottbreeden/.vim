@@ -27,9 +27,8 @@ _Enable smart tabs_
 _Make a tab equal to 2 spaces (4 spaces for python files)_  
 _tell vim using a dark background_
 _autocorrect basic typing-too-fast typos: (waht, tehn, taht, adn, ot)_  
-_plugins / pathogen load: (javascript, jsx, emmet, oceanic)_  
+_plugins / pathogen load: (javascript, jsx, emmet)_  
 _color scheme: Iosvkem_  
-_pymode = python3 (ignore warning "W605")_
 
 =================  
 _Disable arrow keys in normal mode_  
