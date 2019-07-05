@@ -4,10 +4,22 @@
   "                                                                       "
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" =================
-" general settings:
-" =================
+call pathogen#infect()
+call pathogen#helptags()
 
+call plug#begin('~/.vim/plugged')
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mattn/emmet-vim'
+call plug#end()
+
+filetype off
+filetype plugin indent on
+syntax on
+syntax enable
+colorscheme Iosvkem
+
+set bg=dark " tell vim using a dark background
 set updatetime=100
 set history=1000 " Save 1,000 items in history
 set ruler  " Show the line and column number of the cursor position
@@ -18,44 +30,35 @@ set hlsearch " Highlight search matches
 set incsearch " Enable incremental searching
 set ignorecase " Ignore case when searching
 set smartcase " Override 'ignorecase' if search pattern has upper characters.
+set smarttab
 set number " Turn on line numbering 
 set nowrap " Turn off line wrapping
-"set backup " Turn on file backups
-let g:netrw_dirhistmax = 0  " turn off history
-let g:airline_theme='base16' " airline theme
-
-
-" =================
-" indents and tabs:
-" =================
-
 set colorcolumn=80 " column width 80 char default
 set expandtab " Make sure that every file uses real tabs, not spaces
 set shiftround " Round indent to multiple of 'shiftwidth'
 set smartindent " Do smart indenting when starting a new line
 set autoindent " copy indent from current line, over to the new line
 
-" Enable smart tabs
-set smarttab
+"set backup " Turn on file backups
 
-" Make a tab equal to 4 spaces
+autocmd FileType cshtml EmmetInstall
+
+let g:netrw_dirhistmax = 0  " turn off history
+let g:airline_theme='base16' " airline theme
+
+" emmet settings
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+
+" Make a tab equal to x spaces
 let s:tabwidth=2
 exec 'set tabstop='     .s:tabwidth
 exec 'set shiftwidth='  .s:tabwidth
 exec 'set softtabstop=' .s:tabwidth
 
-autocmd FileType py setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType cs setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType c setlocal shiftwidth=4 tabstop=4 softtabstop=4
-autocmd FileType cshtml EmmetInstall
-
-" ================
-" colors / themes:
-" ================
-
-set bg=dark " tell vim using a dark background
-color slate
 
 " ========================
 " autocorrect basic typos:
@@ -69,48 +72,6 @@ iabbrev ot to
 iabbrev aling align
 iabbrev accross across
 iabbrev hte the
-
-" ========================
-" plugins / pathogen load:
-" ========================
-filetype off
-
-call pathogen#infect()
-call pathogen#helptags()
-
-call plug#begin('~/.vim/plugged')
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'mattn/emmet-vim'
-call plug#end()
-
-filetype plugin indent on
-
-" emmet settings
-let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
-
-" color scheme
-syntax on
-syntax enable
-colorscheme Iosvkem
-
-" " Theme
-" syntax enable
-" " for vim 7
-" set t_Co=256
-
-" " for vim 8
-" if (has("termguicolors"))
-" 	set termguicolors
-" endif
-
-" colorscheme OceanicNext
-
-
 
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   "                       Key Mapping Modifications												"
