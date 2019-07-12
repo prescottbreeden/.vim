@@ -4,20 +4,16 @@
   "                                                                       "
   """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 call pathogen#infect()
 call pathogen#helptags()
 
-call plug#begin('~/.vim/plugged')
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'mattn/emmet-vim'
-call plug#end()
-
-filetype off
+filetype on
 filetype plugin indent on
 syntax on
 syntax enable
 colorscheme Iosvkem
+" colorscheme distinguished
 
 set bg=dark " tell vim using a dark background
 set updatetime=100
@@ -45,6 +41,7 @@ autocmd FileType cshtml EmmetInstall
 
 let g:netrw_dirhistmax = 0  " turn off history
 let g:airline_theme='base16' " airline theme
+let g:pymode_python = 'python3'
 
 " emmet settings
 let g:user_emmet_settings = {

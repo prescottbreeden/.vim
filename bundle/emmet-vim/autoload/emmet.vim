@@ -85,12 +85,7 @@ function! emmet#isExtends(type, extend) abort
   if !has_key(s:emmet_settings[a:type], 'extends')
     return 0
   endif
-  let extends = s:emmet_settings[a:type].extends
-  if type(extends) ==# 1
-    let tmp = split(extends, '\s*,\s*')
-    unlet! extends
-    let extends = tmp
-  endif
+  let extends = emmet#lang#getExtends(a:type)
   for ext in extends
     if a:extend ==# ext
       return 1
@@ -119,8 +114,8 @@ function! emmet#isExpandable() abort
   endif
   let part = matchstr(line, '\(\S.*\)$')
   let type = emmet#getFileType()
-  let ftype = emmet#lang#exists(type) ? type : 'html'
-  let part = emmet#lang#{ftype}#findTokens(part)
+  let rtype = emmet#lang#type(type)
+  let part = emmet#lang#{rtype}#findTokens(part)
   return len(part) > 0
 endfunction
 
@@ -334,14 +329,14 @@ function! emmet#getResource(type, name, default) abort
     let ret = a:default
 
     if has_key(s:emmet_settings[type], 'extends')
-      let extends = s:emmet_settings[type].extends
-      if type(extends) ==# 1
-        let tmp = split(extends, '\s*,\s*')
-        unlet! extends
-        let extends = tmp
-      endif
+      let extends = emmet#lang#getExtends(a:type)
+      call reverse(extends) " reverse to overwrite the correct way
       for ext in extends
-        if has_key(s:emmet_settings, ext) && has_key(s:emmet_settings[ext], a:name)
+        if !has_key(s:emmet_settings, ext)
+          continue
+        endif
+
+        if has_key(s:emmet_settings[ext], a:name)
           if type(ret) ==# 3 || type(ret) ==# 4
             call emmet#mergeConfig(ret, s:emmet_settings[ext][a:name])
           else
@@ -376,14 +371,43 @@ endfunction
 
 function! emmet#getFileType(...) abort
   let flg = get(a:000, 0, 0)
-  let type = ''
-
+  
   if has_key(s:emmet_settings, &filetype)
     let type = &filetype
+    if emmet#getResource(type, 'ignore_embeded_filetype', 0)
+      return type 
+    endif
+  endif 
+
+  let pos = emmet#util#getcurpos()
+  let type = synIDattr(synID(max([pos[1], 1]), max([pos[2], 1]), 1), 'name')
+
+  " ignore htmlTagName as it seems to occur too often
+  if type == 'htmlTagName'
+    let type = ''
+  endif
+  if type =~ '^mkdSnippet'
+    let type = tolower(type[10:])
+  endif
+
+  if type =~? '^css'
+    let type = 'css'
+  elseif type =~? '^html'
+    let type = 'html'
+  elseif type =~? '^jsx'
+    let type = 'jsx'
+  elseif (type =~? '^js\w' || type =~? '^javascript') && !(&filetype =~? 'jsx')
+    let type = 'javascript'
+  elseif type =~? '^tsx'
+    let type = 'tsx'
+  elseif type =~? '^ts\w' || type =~? '^typescript'
+    let type = 'typescript'
+  elseif type =~? '^xml'
+    let type = 'xml'
   else
     let types = split(&filetype, '\.')
     for part in types
-      if emmet#lang#exists(part)
+      if has_key(s:emmet_settings, part)
         let type = part
         break
       endif
@@ -399,24 +423,8 @@ function! emmet#getFileType(...) abort
       endif
     endfor
   endif
-  if type ==# 'html'
-    let pos = emmet#util#getcurpos()
-    let type = synIDattr(synID(pos[1], pos[2], 1), 'name')
-    if type =~# '^css\w'
-      let type = 'css'
-    endif
-    if type =~# '^html\w'
-      let type = 'html'
-    endif
-    if type =~# '^javaScript'
-      let type = 'javascript'
-    endif
-    if len(type) ==# 0 && type =~# '^xml'
-      let type = 'xml'
-    endif
-  endif
-  if len(type) ==# 0 | let type = 'html' | endif
-  return type
+
+  return len(type) == 0 ? 'html' : type
 endfunction
 
 function! emmet#getDollarExprs(expand) abort
@@ -511,8 +519,7 @@ function! emmet#unescapeDollarExpr(expand) abort
 endfunction
 
 function! emmet#expandAbbr(mode, abbr) range abort
-  let type = emmet#getFileType()
-  let rtype = emmet#lang#type(emmet#getFileType(1))
+  let type = emmet#getFileType(1)
   let indent = emmet#getIndentation(type)
   let expand = ''
   let line = ''
@@ -649,8 +656,8 @@ function! emmet#expandAbbr(mode, abbr) range abort
       let part = matchstr(line, '\([a-zA-Z0-9:_\-\@|]\+\)$')
     else
       let part = matchstr(line, '\(\S.*\)$')
-      let ftype = emmet#lang#exists(type) ? type : 'html'
-      let part = emmet#lang#{ftype}#findTokens(part)
+      let rtype = emmet#lang#type(type)
+      let part = emmet#lang#{rtype}#findTokens(part)
       let line = line[0: strridx(line, part) + len(part) - 1]
     endif
     if col('.') ==# col('$')
@@ -807,9 +814,9 @@ function! emmet#imageSize() abort
   return ''
 endfunction
 
-function! emmet#encodeImage() abort
+function! emmet#imageEncode() abort
   let type = emmet#getFileType()
-  return emmet#lang#{emmet#lang#type(type)}#encodeImage()
+  return emmet#lang#{emmet#lang#type(type)}#imageEncode()
 endfunction
 
 function! emmet#toggleComment() abort
@@ -838,6 +845,12 @@ endfunction
 function! emmet#removeTag() abort
   let type = emmet#getFileType()
   call emmet#lang#{emmet#lang#type(type)}#removeTag()
+  return ''
+endfunction
+
+function! emmet#mergeLines() abort
+  let type = emmet#getFileType()
+  call emmet#lang#{emmet#lang#type(type)}#mergeLines()
   return ''
 endfunction
 
@@ -1644,6 +1657,7 @@ let s:emmet_settings = {
 \           "wfsm:n": "-webkit-font-smoothing:none;"
 \        },
 \        'filters': 'fc',
+\        'ignore_embeded_filetype': 1,
 \    },
 \    'sass': {
 \        'extends': 'css',
@@ -1882,6 +1896,12 @@ let s:emmet_settings = {
 \        'indentation': '    ',
 \        'extends': 'html',
 \    },
+\    'xml': {
+\        'extends': 'html',
+\        'empty_elements': '',
+\        'block_elements': '',
+\        'inline_elements': '',
+\    },
 \    'htmldjango': {
 \        'extends': 'html',
 \    },
@@ -1984,6 +2004,9 @@ let s:emmet_settings = {
 \        'attribute_name': {'class': 'className', 'for': 'htmlFor'},
 \        'empty_element_suffix': ' />',
 \    },
+\    'tsx': {
+\        'extends': 'jsx',
+\    },
 \    'xslt': {
 \        'extends': 'xsl',
 \    },
@@ -2013,6 +2036,7 @@ let s:emmet_settings = {
 \                    ."\tbody\n"
 \                    ."\t\t${child}|\n",
 \        },
+\        'ignore_embeded_filetype': 1,
 \    },
 \    'xhtml': {
 \        'extends': 'html'
