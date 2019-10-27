@@ -1,0 +1,9 @@
+[submodule "bundle/vim-airline-themes"]
+	path = bundle/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "/home/prescott/.vim/bundle/typescript-vim"]
+	path = /home/prescott/.vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git

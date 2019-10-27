@@ -21,6 +21,8 @@ call pathogen#helptags()
 call plug#begin('~/.vim/plugged')
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'w0rp/ale'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 
@@ -46,33 +48,30 @@ set bg=dark                 " tell vim using a dark background
 set updatetime=100
 set history=1000            " Save 1,000 items in history
 set ruler                   " Show the line and column number of the cursor position
-set showcmd                 " Display the incomplete commands in the bottom of your screen.  
+set showcmd                 " Display the incomplete commands in the bottom of your screen
 set wildmenu                " Display completion matches on your status line
 set scrolloff=5             " Show a few lines of context around the cursor
 set hlsearch                " Highlight search matches
 set incsearch               " Enable incremental searching
 set ignorecase              " Ignore case when searching
-set smartcase               " Override 'ignorecase' if search pattern has upper characters.
+set smartcase               " Override 'ignorecase' if search pattern has upper characters
 set smarttab
-set number                  " Turn on line numbering 
+set number                  " Turn on line numbering
 set nowrap                  " Turn off line wrapping
 set colorcolumn=80          " column width 80 char default
 set expandtab               " Make sure that every file uses real tabs, not spaces
 set shiftround              " Round indent to multiple of 'shiftwidth'
 set smartindent             " Do smart indenting when starting a new line
 set autoindent              " copy indent from current line, over to the new line
-set t_Co=256                " Explicityly tell vim that the terminal supoprts 256 colors"
-
-" toggle invisible characters
-set list
+set t_Co=256                " Explicityly tell vim that the terminal supoprts 256 colors
+set list                    " Show invisible characters
 set listchars=tab:>\ ,eol:¬,trail:⋅,extends:>,precedes:<
-" set showbreak=↪
 let g:netrw_dirhistmax = 0  " turn off history
+let g:netrw_banner = 0
 
 autocmd FileType cshtml EmmetInstall
 
-" let g:airline_theme='base16' " airline theme
-let g:airline_theme='light' " airline theme
+let g:airline_theme='laederon' " airline theme
 let g:pymode_python = 'python3' " pymode settings
 
 " emmet settings
