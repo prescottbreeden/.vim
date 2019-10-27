@@ -7,3 +7,9 @@
 [submodule "/home/prescott/.vim/bundle/typescript-vim"]
 	path = /home/prescott/.vim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "/home/prescott/.vim/bundle/nerdtree"]
+	path = /home/prescott/.vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "/home/prescott/.vim/bundle/nerdtree-git-plugin"]
+	path = /home/prescott/.vim/bundle/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git

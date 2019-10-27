@@ -5,26 +5,22 @@
 set encoding=utf-8
 scriptencoding utf-8
 
-filetype on
-filetype plugin indent on
-" filetype indent plugin on
-
-syntax on
-syntax enable
-colorscheme Iosvkem
-" colorscheme distinguished
-
-
 call pathogen#infect()
 call pathogen#helptags()
 
 call plug#begin('~/.vim/plugged')
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'w0rp/ale'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
+syntax on
+syntax enable
+colorscheme Iosvkem
+" colorscheme distinguished
+
+filetype on
+filetype plugin indent on
+" filetype indent plugin on
 
 " Use the stdio OmniSharp-roslyn server
 let g:OmniSharp_server_stdio = 1
@@ -68,10 +64,15 @@ set list                    " Show invisible characters
 set listchars=tab:>\ ,eol:¬,trail:⋅,extends:>,precedes:<
 let g:netrw_dirhistmax = 0  " turn off history
 let g:netrw_banner = 0
+let NERDTreeShowHidden=1
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd BufEnter * if bufname('#') =~# "^NERD_tree_" && winnr('$') > 1 | b# | endif
 
 autocmd FileType cshtml EmmetInstall
 
-let g:airline_theme='laederon' " airline theme
+let g:airline_theme='dark' " airline theme
 let g:pymode_python = 'python3' " pymode settings
 
 " emmet settings
@@ -115,16 +116,26 @@ map <right> <nop>
 map <space> :
 nnoremap <C-n> :nohl <return>
 noremap cp yap<S-}>p
+
+" change window size
 noremap <C-up> <C-w>+
 noremap <C-down> <C-w>-
 noremap <C-left> <C-w><
 noremap <C-right> <C-w>>
+
+" switch between windows
+no <C-j> <C-w>j| "switching to below window 
+no <C-k> <C-w>k| "switching to above window
+no <C-l> <C-w>l| "switching to right window 
+no <C-h> <C-w>h| "switching to left window
+
 
 " insert-mode settings:
 inoremap jk <esc>
 
 " leader commands
 noremap <leader>a =ip
+map <leader>` :NERDTreeToggle<CR>
 
 " set spellcheck with commands
 noremap <silent> <leader>s :set spell!<cr>
