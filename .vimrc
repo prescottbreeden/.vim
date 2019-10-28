@@ -39,6 +39,10 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" Files, backups and undo
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
 set runtimepath^=~/.vim/bundle/ctrlp.vim " ctrl-p
 set bg=dark                 " tell vim using a dark background
 set updatetime=100
