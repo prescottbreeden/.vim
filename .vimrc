@@ -137,9 +137,10 @@ no <C-h> <C-w>h| "switching to left window
 " insert-mode settings:
 inoremap jk <esc>
 
+let mapleader=','
 " leader commands
 noremap <leader>a =ip
-map <leader>` :NERDTreeToggle<CR>
+map <leader>k :NERDTreeToggle<CR>
 
 " set spellcheck with commands
 noremap <silent> <leader>s :set spell!<cr>
